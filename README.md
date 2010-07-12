@@ -1,7 +1,7 @@
 Resourcerer
 ===========
 
-A small annotation processor for Eclipse that checks @Resource annotations from the Swing Application Framework (https://appframework.dev.java.net/) against the properties file that defines the values for the injected resources.
+A small annotation processor for Eclipse that checks @Resource annotations from the [Swing Application Framework](https://appframework.dev.java.net/) against the properties file that defines the values for the injected resources.
 
 The values of injected resources are displayed with a little info marker on the left side of the Eclipse editor.
 
