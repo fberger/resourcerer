@@ -38,7 +38,7 @@ public class ResourceAnnotationProcessor implements AnnotationProcessor {
 					String resourceKey = field.getDeclaringType().getSimpleName() + "." + field.getSimpleName();
 					String value = props.getProperty(resourceKey);
 					if (value == null) {
-						messager.printWarning(field.getPosition(), "No value defined for: " + resourceKey);
+						messager.printWarning(field.getPosition(), "No value defined for " + resourceKey);
 					} else {
 						messager.printNotice(field.getPosition(), resourceKey + " = " + value);
 					}
