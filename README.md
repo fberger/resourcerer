@@ -10,8 +10,8 @@ If injected resources are not defined in the properties file, the processor mark
 Usage
 =====
 
-* Open project properties in Eclipse. 
-* Go to section Java Compiler -> Annotation Processing -> Factory Path. 
+* Open project properties in Eclipse.
+* Go to section Java Compiler -> Annotation Processing -> Factory Path.
 * Enable project specific settings and add resourcerer.jar.
 
 * Go to Java Compiler -> Annotation Processing.
