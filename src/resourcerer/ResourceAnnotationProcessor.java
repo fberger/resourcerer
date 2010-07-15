@@ -1,6 +1,5 @@
 package resourcerer;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Collection;
@@ -12,7 +11,6 @@ import com.sun.mirror.apt.Messager;
 import com.sun.mirror.declaration.AnnotationTypeDeclaration;
 import com.sun.mirror.declaration.Declaration;
 import com.sun.mirror.declaration.FieldDeclaration;
-import com.sun.mirror.util.SourcePosition;
 
 public class ResourceAnnotationProcessor implements AnnotationProcessor {
 
@@ -53,34 +51,20 @@ public class ResourceAnnotationProcessor implements AnnotationProcessor {
 		if (props != null) {
 			return props;
 		}
-		SourcePosition sourcePosition = declaration.getPosition();
-		File resourceFile = findResourceFiles(sourcePosition.file());
+		String resourceFile = env.getOptions().get("resourceFile");
+		Properties props = new Properties();
 		if (resourceFile != null) {
-			Properties props = new Properties();
 			try {
 				props.load(new FileInputStream(resourceFile));
 				this.props = props;
 				return props;
 			} catch (IOException e) {
-				env.getMessager().printWarning(sourcePosition, "Could not read resource file: " + resourceFile);
+				env.getMessager().printWarning(declaration.getPosition(), "Could not read resource file: " + resourceFile);
 			}
 		} else {
-			env.getMessager().printNotice(sourcePosition, "Could not find resource file");
+			env.getMessager().printWarning(declaration.getPosition(), "No resourceFile defined in options");
 		}
-		return null;
-	}
-	
-	private File findResourceFiles(File sourceFile) {
-		while (sourceFile != null) {
-			if (sourceFile.getName().equals("swing")) {
-				File file = new File(sourceFile, "main/resources/MainFrame.properties");
-				if (file.isFile()) {
-					return file;
-				}
-			}
-			sourceFile = sourceFile.getParentFile();
-		}
-		return null;
+		return props;
 	}
 
 }
