@@ -11,10 +11,13 @@ Usage
 =====
 
 * Open project properties in Eclipse.
+
 * Go to section Java Compiler -> Annotation Processing -> Factory Path.
+
 * Enable project specific settings and add resourcerer.jar.
 
 * Go to Java Compiler -> Annotation Processing.
-* Enable project specific settings and add a new options key value pair
+
+* Enable project specific settings and add a new options key value pair:
 
   resourceFile = /absolute/path/to/JDesktop/resource/properties/file
